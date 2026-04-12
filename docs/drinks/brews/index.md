@@ -9,4 +9,5 @@
 - [Маковый настой](poppy_brew.md)
 - [Отвар ламинарии](kelp_broth.md)
 - [Эликсир одуванчиков](dandelion_elixir.md)
+- [Кошачья мята](catnip.md)
 - [Сбитень](sbiten.md)
