@@ -1,0 +1,34 @@
+site_name: DomSMP Wiki
+theme:
+  name: material
+  language: ru
+  palette:
+    - scheme: default
+      primary: amber
+      toggle:
+        icon: material/weather-night
+        name: Тёмная тема
+    - scheme: slate
+      primary: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Светлая тема
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Главная: index.md
+  - Напитки:
+      - Обзор: drinks/index.md
+      - Зелёный чай: drinks/green_tea.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
