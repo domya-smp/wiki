@@ -3,32 +3,104 @@ theme:
   name: material
   language: ru
   palette:
-    - scheme: default
-      primary: amber
-      toggle:
-        icon: material/weather-night
-        name: Тёмная тема
-    - scheme: slate
-      primary: amber
-      toggle:
-        icon: material/weather-sunny
-        name: Светлая тема
+  - scheme: default
+    primary: amber
+    toggle:
+      icon: material/weather-night
+      name: Тёмная тема
+  - scheme: slate
+    primary: amber
+    toggle:
+      icon: material/weather-sunny
+      name: Светлая тема
   features:
-    - navigation.sections
-    - navigation.top
-    - search.suggest
-    - content.code.copy
-
+  - navigation.sections
+  - navigation.top
+  - search.suggest
+  - content.code.copy
 nav:
-  - Главная: index.md
-  - Напитки:
-      - Обзор: drinks/index.md
-      - Зелёный чай: drinks/green_tea.md
-
+- Главная: index.md
+- Напитки:
+  - Обзор: drinks/index.md
+  - Чаи:
+    - Обзор: drinks/teas/index.md
+    - Зелёный чай: drinks/teas/green_tea.md
+    - Чай из папоротника: drinks/teas/fern_tea.md
+    - Цветочный чай: drinks/teas/flower_tea.md
+    - Мятный чай: drinks/teas/mint_tea.md
+    - Розовый чай: drinks/teas/rose_tea.md
+    - Сиреневый чай: drinks/teas/lilac_tea.md
+    - Чай из азалии: drinks/teas/azalea_tea.md
+    - Ягодный чай: drinks/teas/berry_tea.md
+    - Какао-чай: drinks/teas/cocoa_tea.md
+  - Соки и морсы:
+    - Обзор: drinks/juices/index.md
+    - Яблочный сок: drinks/juices/apple_juice.md
+    - Морковный сок: drinks/juices/carrot_juice.md
+    - Арбузный сок: drinks/juices/melon_juice.md
+    - Тыквенный сок: drinks/juices/pumpkin_juice.md
+    - Свекольный сок: drinks/juices/beet_juice.md
+    - Ягодный морс: drinks/juices/berry_mors.md
+    - Глоу-морс: drinks/juices/glow_mors.md
+    - Кактусовый фреш: drinks/juices/cactus_fresh.md
+    - Компот: drinks/juices/compote.md
+  - Квасы:
+    - Обзор: drinks/kvass/index.md
+    - Хлебный квас: drinks/kvass/bread_kvass.md
+    - Свекольный квас: drinks/kvass/beet_kvass.md
+    - Берёзовый квас: drinks/kvass/birch_kvass.md
+    - Медовый квас: drinks/kvass/honey_kvass.md
+  - Молочные и согревающие:
+    - Обзор: drinks/milk/index.md
+    - Молоко с мёдом: drinks/milk/milk_honey.md
+    - Какао на молоке: drinks/milk/cocoa_milk.md
+    - Топлёное молоко: drinks/milk/baked_milk.md
+    - Ягодный молочный коктейль: drinks/milk/berry_milkshake.md
+    - Тыквенный латте: drinks/milk/pumpkin_latte.md
+  - Прохладительные:
+    - Обзор: drinks/cold/index.md
+    - Лимонад: drinks/cold/lemonade.md
+    - Мятный лимонад: drinks/cold/mint_lemonade.md
+    - Ягодный смузи: drinks/cold/berry_smoothie.md
+    - Арбузный айс: drinks/cold/melon_ice.md
+    - Холодный чай: drinks/cold/iced_tea.md
+    - Глоу-лимонад: drinks/cold/glow_lemonade.md
+  - Отвары:
+    - Обзор: drinks/brews/index.md
+    - Грибной отвар: drinks/brews/mushroom_broth.md
+    - Настой пустоши: drinks/brews/wasteland_brew.md
+    - Маковый настой: drinks/brews/poppy_brew.md
+    - Отвар ламинарии: drinks/brews/kelp_broth.md
+    - Эликсир одуванчиков: drinks/brews/dandelion_elixir.md
+    - Сбитень: drinks/brews/sbiten.md
+  - Коктейли (моктейли):
+    - Обзор: drinks/cocktails/index.md
+    - Малиновый закат: drinks/cocktails/raspberry_sunset.md
+    - Тропический бриз: drinks/cocktails/tropical_breeze.md
+    - Мохито без алкоголя: drinks/cocktails/mojito.md
+    - Пина колада: drinks/cocktails/pina_colada.md
+    - Кровавая Мэри: drinks/cocktails/bloody_mary.md
+    - Цитрусовый взрыв: drinks/cocktails/citrus_burst.md
+    - Ягодный дайкири: drinks/cocktails/berry_daiquiri.md
+    - Шоколадный гром: drinks/cocktails/chocolate_thunder.md
+    - Медовый физз: drinks/cocktails/honey_fizz.md
+    - Изумрудный сад: drinks/cocktails/emerald_garden.md
+    - Ночная Роса: drinks/cocktails/night_dew.md
+    - Фейерверк: drinks/cocktails/fireworks.md
+  - Редкие эксклюзивы:
+    - Обзор: drinks/exclusive/index.md
+    - Эликсир Кипрея: drinks/exclusive/fireweed_elixir.md
+    - Янтарный концентрат: drinks/exclusive/amber_concentrate.md
+    - Сердце Глубин: drinks/exclusive/heart_of_depths.md
+    - Золотое молоко: drinks/exclusive/golden_milk.md
+    - Адский настой: drinks/exclusive/nether_brew.md
+    - Шёпот Дриад: drinks/exclusive/dryad_whisper.md
+    - Слеза Края: drinks/exclusive/end_tear.md
+    - Эликсир Дракона: drinks/exclusive/dragon_elixir.md
 markdown_extensions:
-  - admonition
-  - toc:
-      permalink: true
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
+- admonition
+- toc:
+    permalink: true
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.highlight
