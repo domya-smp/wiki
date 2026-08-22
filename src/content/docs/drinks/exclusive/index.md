@@ -6,11 +6,11 @@ description: "Напитки высшей сложности. 9–10 звёзд.
 
 ## Рецепты
 
-- [Эликсир Кипрея](fireweed_elixir.md)
-- [Янтарный концентрат](amber_concentrate.md)
-- [Сердце Глубин](heart_of_depths.md)
-- [Золотое молоко](golden_milk.md)
-- [Адский настой](nether_brew.md)
-- [Шёпот Дриад](dryad_whisper.md)
-- [Слеза Края](end_tear.md)
-- [Эликсир Дракона](dragon_elixir.md)
+- [Эликсир Кипрея](fireweed_elixir/)
+- [Янтарный концентрат](amber_concentrate/)
+- [Сердце Глубин](heart_of_depths/)
+- [Золотое молоко](golden_milk/)
+- [Адский настой](nether_brew/)
+- [Шёпот Дриад](dryad_whisper/)
+- [Слеза Края](end_tear/)
+- [Эликсир Дракона](dragon_elixir/)

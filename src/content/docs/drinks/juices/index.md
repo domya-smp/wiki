@@ -6,12 +6,12 @@ description: "Фруктово-ягодные напитки без выдерж
 
 ## Рецепты
 
-- [Яблочный сок](apple_juice.md)
-- [Морковный сок](carrot_juice.md)
-- [Арбузный сок](melon_juice.md)
-- [Тыквенный сок](pumpkin_juice.md)
-- [Свекольный сок](beet_juice.md)
-- [Ягодный морс](berry_mors.md)
-- [Глоу-морс](glow_mors.md)
-- [Кактусовый фреш](cactus_fresh.md)
-- [Компот](compote.md)
+- [Яблочный сок](apple_juice/)
+- [Морковный сок](carrot_juice/)
+- [Арбузный сок](melon_juice/)
+- [Тыквенный сок](pumpkin_juice/)
+- [Свекольный сок](beet_juice/)
+- [Ягодный морс](berry_mors/)
+- [Глоу-морс](glow_mors/)
+- [Кактусовый фреш](cactus_fresh/)
+- [Компот](compote/)

@@ -6,7 +6,7 @@ description: "Настой в дубовой или берёзовой бочк�
 
 ## Рецепты
 
-- [Хлебный квас](bread_kvass.md)
-- [Свекольный квас](beet_kvass.md)
-- [Берёзовый квас](birch_kvass.md)
-- [Медовый квас](honey_kvass.md)
+- [Хлебный квас](bread_kvass/)
+- [Свекольный квас](beet_kvass/)
+- [Берёзовый квас](birch_kvass/)
+- [Медовый квас](honey_kvass/)

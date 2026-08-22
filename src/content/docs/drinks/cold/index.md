@@ -6,9 +6,9 @@ description: "Со снежком — освежают в жару."
 
 ## Рецепты
 
-- [Лимонад](lemonade.md)
-- [Мятный лимонад](mint_lemonade.md)
-- [Ягодный смузи](berry_smoothie.md)
-- [Арбузный айс](melon_ice.md)
-- [Холодный чай](iced_tea.md)
-- [Глоу-лимонад](glow_lemonade.md)
+- [Лимонад](lemonade/)
+- [Мятный лимонад](mint_lemonade/)
+- [Ягодный смузи](berry_smoothie/)
+- [Арбузный айс](melon_ice/)
+- [Холодный чай](iced_tea/)
+- [Глоу-лимонад](glow_lemonade/)

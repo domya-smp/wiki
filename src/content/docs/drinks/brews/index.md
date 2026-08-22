@@ -6,11 +6,11 @@ description: "Необычные рецепты с редкими эффекта
 
 ## Рецепты
 
-- [Грибной отвар](mushroom_broth.md)
-- [Настой пустоши](wasteland_brew.md)
-- [Маковый настой](poppy_brew.md)
-- [Отвар ламинарии](kelp_broth.md)
-- [Эликсир одуванчиков](dandelion_elixir.md)
-- [Валерьянка](valerian.md)
-- [Кошачья мята](catnip.md)
-- [Сбитень](sbiten.md)
+- [Грибной отвар](mushroom_broth/)
+- [Настой пустоши](wasteland_brew/)
+- [Маковый настой](poppy_brew/)
+- [Отвар ламинарии](kelp_broth/)
+- [Эликсир одуванчиков](dandelion_elixir/)
+- [Валерьянка](valerian/)
+- [Кошачья мята](catnip/)
+- [Сбитень](sbiten/)

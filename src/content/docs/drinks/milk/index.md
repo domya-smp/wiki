@@ -6,8 +6,8 @@ description: "Напитки на основе молока."
 
 ## Рецепты
 
-- [Молоко с мёдом](milk_honey.md)
-- [Какао на молоке](cocoa_milk.md)
-- [Топлёное молоко](baked_milk.md)
-- [Ягодный молочный коктейль](berry_milkshake.md)
-- [Тыквенный латте](pumpkin_latte.md)
+- [Молоко с мёдом](milk_honey/)
+- [Какао на молоке](cocoa_milk/)
+- [Топлёное молоко](baked_milk/)
+- [Ягодный молочный коктейль](berry_milkshake/)
+- [Тыквенный латте](pumpkin_latte/)
