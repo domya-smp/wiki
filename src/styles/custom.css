@@ -1,0 +1,381 @@
+:root {
+  --sl-color-accent-low: #eee3ff;
+  --sl-color-accent: #8b3fd1;
+  --sl-color-accent-high: #401266;
+  --sl-color-white: #211728;
+  --sl-color-gray-1: #382d40;
+  --sl-color-gray-2: #584b61;
+  --sl-color-gray-3: #7c7084;
+  --sl-color-gray-4: #a89ead;
+  --sl-color-gray-5: #d8d0dc;
+  --sl-color-gray-6: #f0ebf2;
+  --sl-color-black: #fffaff;
+  --sl-content-width: 64rem;
+  --sl-sidebar-item-padding-inline: 0.625rem;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #35134f;
+  --sl-color-accent: #c76aff;
+  --sl-color-accent-high: #f0c7ff;
+  --sl-color-white: #fcf7ff;
+  --sl-color-gray-1: #eee5f2;
+  --sl-color-gray-2: #c7b9ce;
+  --sl-color-gray-3: #998aa1;
+  --sl-color-gray-4: #695c70;
+  --sl-color-gray-5: #413648;
+  --sl-color-gray-6: #29202f;
+  --sl-color-black: #140d18;
+}
+
+/* DomSMP uses a deliberately sharp, architectural visual language. */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 12% 4%, color-mix(in srgb, #b44cff 12%, transparent), transparent 25rem),
+    radial-gradient(circle at 88% 32%, color-mix(in srgb, #ef4fbd 8%, transparent), transparent 30rem);
+}
+
+:root[data-theme='light'] .header {
+  border-bottom-color: #dacde0;
+  background: #f7f1f9;
+  box-shadow: none;
+}
+
+:root[data-theme='light'] .header button,
+:root[data-theme='light'] .header select {
+  border-color: #d4c4dc;
+  color: #382d40;
+  background-color: #f1e8f4;
+}
+
+:root[data-theme='light'] .header button:hover,
+:root[data-theme='light'] .header select:hover {
+  border-color: #9d64b8;
+  background-color: #eadcf0;
+}
+
+/* Give long Russian navigation labels room without oversized gaps. */
+.sidebar-content summary,
+.sidebar-content a {
+  line-height: 1.25;
+}
+
+.sidebar-content ul ul {
+  margin-block: 0.1rem 0.2rem;
+  padding-inline-start: 0.5rem;
+  border-inline-start: 0;
+}
+
+.sidebar-content ul ul li {
+  margin-inline-start: 0;
+  padding-inline-start: 0.5rem;
+  border-inline-start: 0;
+}
+
+.sidebar-content > ul {
+  gap: 0.25rem;
+}
+
+.sidebar-content details,
+.sidebar-content details[open] {
+  margin-block: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.sidebar-content details > summary,
+.sidebar-content details[open] > summary {
+  padding: 0.45rem 0.5rem;
+  border: 0;
+  color: var(--sl-color-white);
+  background: transparent;
+}
+
+.sidebar-content details ul {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+.sl-markdown-content > :is(h2, h3) {
+  scroll-margin-top: 5rem;
+}
+
+.sl-markdown-content > h2 {
+  margin-top: 2rem !important;
+}
+
+.sl-markdown-content > h3 {
+  margin-top: 1.5rem !important;
+}
+
+.sl-markdown-content > :is(h2, h3) + * {
+  margin-top: 1rem !important;
+}
+
+.hero .sl-link-button.primary {
+  padding: 0.8rem 1.2rem;
+  font-weight: 700;
+}
+
+.sl-markdown-content > :is(p, blockquote) {
+  max-width: 52rem;
+}
+
+.drink-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 2rem;
+  max-width: none;
+  padding: 0;
+  list-style: none;
+}
+
+.drink-category-grid li {
+  padding: 0.75rem 0;
+  border-inline-start: 2px solid var(--sl-color-gray-5);
+  padding-inline-start: 1rem;
+}
+
+.drink-category-grid li:hover {
+  border-color: var(--sl-color-accent);
+}
+
+.drink-category-grid a {
+  font-weight: 700;
+}
+
+.drink-category-grid span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--sl-color-gray-2);
+  line-height: 1.45;
+}
+
+.sl-markdown-content details {
+  margin-block: 0.65rem;
+  border: 0;
+  border-inline-start: 2px solid var(--sl-color-gray-4);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--sl-color-gray-6) 52%, transparent);
+  overflow: visible;
+  transition: border-color 160ms ease, background 160ms ease;
+  padding-inline-start: 0 !important;
+}
+
+.sl-markdown-content details > summary {
+  padding: 0.9rem 1rem;
+  color: var(--sl-color-white);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.sl-markdown-content details:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent-low) 32%, transparent);
+}
+
+.sl-markdown-content details[open] > summary {
+  border: 0;
+  color: var(--sl-color-accent-high);
+  margin-bottom: 0 !important;
+}
+
+.sl-markdown-content details[open] {
+  padding-bottom: 0.9rem;
+}
+
+.sl-markdown-content details > summary + * {
+  margin-top: 0 !important;
+}
+
+.sl-markdown-content details > :not(summary) {
+  margin-inline: 1rem;
+}
+
+.sl-markdown-content details > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Flat, directional previous/next navigation. */
+.pagination-links {
+  gap: 2rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--sl-color-gray-5);
+}
+
+.pagination-links > a {
+  position: relative;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
+  border: 0;
+  color: var(--sl-color-gray-2);
+  background: transparent;
+  box-shadow: none;
+  transition: color 160ms ease;
+}
+
+.pagination-links > a::before {
+  position: absolute;
+  top: -1px;
+  width: 3.5rem;
+  height: 2px;
+  background: var(--sl-color-accent);
+  content: '';
+  transition: width 180ms ease;
+}
+
+.pagination-links > a[rel='prev']::before {
+  left: 0;
+}
+
+.pagination-links > a[rel='next']::before {
+  right: 0;
+}
+
+.pagination-links > a:hover {
+  color: var(--sl-color-accent-high);
+}
+
+.pagination-links > a:hover::before {
+  width: 100%;
+}
+
+.pagination-links .link-title {
+  color: var(--sl-color-white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pagination-links svg {
+  color: var(--sl-color-accent);
+  transition: transform 160ms ease;
+}
+
+.pagination-links > a[rel='prev']:hover svg {
+  transform: translateX(-0.25rem);
+}
+
+.pagination-links > a[rel='next']:hover svg {
+  transform: translateX(0.25rem);
+}
+
+.crafting-recipe {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem 0;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.crafting-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 3rem);
+  grid-template-rows: repeat(3, 3rem);
+  gap: 0.2rem;
+}
+
+.crafting-slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-color: #373737 #fff #fff #373737;
+  background: #8b8b8b;
+}
+
+.crafting-slot img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.crafting-arrow {
+  color: var(--sl-color-accent-high);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.crafting-result .crafting-slot {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.item-count {
+  position: absolute;
+  right: 0.2rem;
+  bottom: 0;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 1px 1px #222, -1px -1px #222, 1px -1px #222, -1px 1px #222;
+}
+
+@media screen and (max-width: 35rem) {
+  .drink-category-grid {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .sl-markdown-content > h2 {
+    margin-top: 1.75rem !important;
+  }
+
+  .sl-markdown-content > h3 {
+    margin-top: 1.35rem !important;
+  }
+
+  .crafting-recipe {
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.6rem 0;
+  }
+
+  .pagination-links {
+    gap: 1rem;
+  }
+
+  .crafting-grid {
+    grid-template-columns: repeat(3, 2.5rem);
+    grid-template-rows: repeat(3, 2.5rem);
+  }
+
+  .crafting-slot {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .crafting-slot img {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .crafting-arrow {
+    font-size: 1.5rem;
+  }
+
+  .crafting-result .crafting-slot {
+    width: 3rem;
+    height: 3rem;
+  }
+}

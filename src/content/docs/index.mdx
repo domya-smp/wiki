@@ -1,0 +1,51 @@
+---
+title: DomSMP Wiki
+description: Команды, памятка новичка, серверные крафты и рецепты напитков DomSMP.
+template: splash
+hero:
+  title: DomSMP Wiki
+  tagline: Всё необходимое для комфортной жизни на сервере — от первого дня до редких рецептов.
+  actions:
+    - text: Начать с ЧаВо
+      link: ./faq/
+      icon: right-arrow
+    - text: Открыть команды
+      link: ./commands/
+      icon: open-book
+      variant: minimal
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import WikiLink from '../../components/WikiLink.astro';
+
+<CardGrid>
+  <WikiLink
+    title="ЧаВо и памятка новичка"
+    href="./faq/"
+    description="Стартовые ресурсы, транспорт, фракции, карма и частые вопросы."
+  />
+  <WikiLink
+    title="Команды"
+    href="./commands/"
+    description="Чат, РП, титулы, карма, музыка на пластинках и полезные инструменты."
+  />
+  <WikiLink
+    title="Серверные крафты"
+    href="./recipes/"
+    description="Особые рецепты предметов и блоков, доступных на сервере."
+  />
+  <WikiLink
+    title="Напитки BreweryX"
+    href="./drinks/"
+    description="Ингредиенты, варка, выдержка и эффекты всех серверных напитков."
+  />
+</CardGrid>
+
+## Полезные ссылки
+
+<CardGrid>
+  <WikiLink title="Сайт сервера" href="https://domyasmp.ru/" icon="external" />
+  <WikiLink title="Карта мира" href="https://domya-smp.dynmap.xyz/" icon="globe" />
+  <WikiLink title="Фракции" href="https://domyasmp.ru/index.php?page=clans" icon="building" />
+  <WikiLink title="Вики по карме" href="https://github.com/onitofu/ethos/wiki" icon="heart" />
+</CardGrid>

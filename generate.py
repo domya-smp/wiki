@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Генератор страниц напитков для MkDocs из единого источника данных."""
+"""Генератор страниц напитков и крафтов для Astro Starlight."""
+import json
 from pathlib import Path
-import yaml
 
 ROOT = Path(__file__).parent
-DOCS = ROOT / "docs" / "drinks"
+CONTENT_DOCS = ROOT / "src" / "content" / "docs"
+DOCS = CONTENT_DOCS / "drinks"
+RECIPES_DOCS = CONTENT_DOCS / "recipes"
+SIDEBAR_PATH = ROOT / "src" / "generated-sidebar.mjs"
 
 CATEGORIES = [
     ("teas", "Чаи", "Быстрые травяные настои с лёгкими эффектами."),
@@ -227,6 +230,67 @@ DRINKS = {
     ],
 }
 
+CRAFTING_RECIPES = [
+    {
+        "name": "Блок света",
+        "description": "Невидимый источник света для аккуратной подсветки построек.",
+        "grid": [
+            "yellow_stained_glass_pane", "yellow_stained_glass_pane", "yellow_stained_glass_pane",
+            "yellow_stained_glass_pane", "torch", "yellow_stained_glass_pane",
+            "yellow_stained_glass_pane", "yellow_stained_glass_pane", "yellow_stained_glass_pane",
+        ],
+        "result": "light",
+        "result_name": "Блок света",
+        "result_count": 1,
+        "ingredients": "8 жёлтых стеклянных панелей и 1 факел",
+    },
+    {
+        "name": "Кожа из гнилой плоти",
+        "description": "Способ переработать лишнюю гнилую плоть в кожу.",
+        "grid": [
+            "rotten_flesh", "rotten_flesh", None,
+            "rotten_flesh", "rotten_flesh", None,
+            None, None, None,
+        ],
+        "result": "leather",
+        "result_name": "Кожа",
+        "result_count": 1,
+        "ingredients": "4 гнилые плоти квадратом 2×2",
+    },
+    {
+        "name": "Невидимые рамки",
+        "description": "Рамки без видимой границы — удобно для декоративных вывесок и витрин.",
+        "grid": [
+            "item_frame", "item_frame", "item_frame",
+            "item_frame", "phantom_membrane", "item_frame",
+            "item_frame", "item_frame", "item_frame",
+        ],
+        "result": "item_frame",
+        "result_name": "Невидимая рамка",
+        "result_count": 8,
+        "ingredients": "8 обычных рамок и 1 фантомная мембрана",
+    },
+]
+
+ITEM_NAMES = {
+    "yellow_stained_glass_pane": "Жёлтая стеклянная панель",
+    "torch": "Факел",
+    "light": "Блок света",
+    "rotten_flesh": "Гнилая плоть",
+    "leather": "Кожа",
+    "item_frame": "Рамка",
+    "phantom_membrane": "Фантомная мембрана",
+}
+
+
+def frontmatter(title, description=None):
+    """Create Starlight frontmatter with safely quoted YAML strings."""
+    lines = ["---", f"title: {json.dumps(title, ensure_ascii=False)}"]
+    if description:
+        lines.append(f"description: {json.dumps(description, ensure_ascii=False)}")
+    lines.extend(["---", ""])
+    return "\n".join(lines)
+
 
 def render(drink):
     # Normalize: optional glint flag as trailing True
@@ -247,12 +311,11 @@ def render(drink):
     # Effects table
     eff_rows = "\n".join(f"| {e} | {lvl} | {dur} |" for e, lvl, dur in effects)
 
-    md = f"""# {name}
+    md = frontmatter(name, desc) + f"""*{desc}*
 
-*{desc}*
-
-!!! info "Краткая справка"
-    **Сложность:** {diff} · **Опьянение:** {alc} · {barrel_line}
+:::note[Краткая справка]
+**Сложность:** {diff} · **Опьянение:** {alc} · {barrel_line}
+:::
 
 ## Ингредиенты
 
@@ -281,35 +344,88 @@ def render(drink):
     return md
 
 
+def render_crafting_recipe(recipe):
+    """Render an accessible crafting-table diagram backed by local assets."""
+    slots = []
+    for item in recipe["grid"]:
+        if item is None:
+            slots.append('<span class="crafting-slot" aria-hidden="true"></span>')
+            continue
+        name = ITEM_NAMES[item]
+        slots.append(
+            f'<span class="crafting-slot"><img src="../assets/items/{item}.png" '
+            f'alt="{name}" title="{name}"></span>'
+        )
+
+    result = recipe["result"]
+    result_name = recipe["result_name"]
+    result_count = recipe["result_count"]
+    count_badge = f'<span class="item-count">{result_count}</span>' if result_count > 1 else ""
+    return f"""## {recipe['name']}
+
+{recipe['description']}
+
+<div class="crafting-recipe" role="img" aria-label="{recipe['ingredients']} дают {result_count} × {result_name}">
+  <div class="crafting-grid">
+    {''.join(slots)}
+  </div>
+  <span class="crafting-arrow" aria-hidden="true">→</span>
+  <div class="crafting-result">
+    <span class="crafting-slot"><img src="../assets/items/{result}.png" alt="{result_name}" title="{result_name}">{count_badge}</span>
+  </div>
+</div>
+
+**Ингредиенты:** {recipe['ingredients']}
+
+**Результат:** {result_count} × {result_name}
+"""
+
+
+def render_crafting_index():
+    recipes = "\n\n".join(render_crafting_recipe(recipe) for recipe in CRAFTING_RECIPES)
+    return frontmatter(
+        "Серверные крафты",
+        "Рецепты предметов и блоков, доступных благодаря механикам DomSMP.",
+    ) + f"""Здесь собраны особые рецепты предметов и блоков, доступных на DomSMP. Раздел будет пополняться вместе с сервером.
+
+{recipes}
+"""
+
+
 def main():
-    # Сформируем nav
-    nav_drinks = [{"Обзор": "drinks/index.md"}]
+    # Сформируем страницы и боковую навигацию Starlight
+    sidebar_drinks = [{"label": "Обзор", "slug": "drinks"}]
     category_index_entries = []
     for cat_slug, cat_name, cat_desc in CATEGORIES:
         cat_dir = DOCS / cat_slug
         cat_dir.mkdir(parents=True, exist_ok=True)
         drinks = DRINKS.get(cat_slug, [])
         # Category index
-        cat_index = f"# {cat_name}\n\n{cat_desc}\n\n## Рецепты\n\n"
-        cat_nav = [{"Обзор": f"drinks/{cat_slug}/index.md"}]
+        cat_index = frontmatter(cat_name, cat_desc) + f"{cat_desc}\n\n## Рецепты\n\n"
+        cat_nav = [{"label": "Обзор", "slug": f"drinks/{cat_slug}"}]
         for drink in drinks:
             slug = drink[0]
             name = drink[1]
             (cat_dir / f"{slug}.md").write_text(render(drink), encoding="utf-8")
             cat_index += f"- [{name}]({slug}.md)\n"
-            cat_nav.append({name: f"drinks/{cat_slug}/{slug}.md"})
+            cat_nav.append({"label": name, "slug": f"drinks/{cat_slug}/{slug}"})
         (cat_dir / "index.md").write_text(cat_index, encoding="utf-8")
-        nav_drinks.append({cat_name: cat_nav})
-        category_index_entries.append(f"- **[{cat_name}]({cat_slug}/index.md)** — {cat_desc}")
+        sidebar_drinks.append({"label": cat_name, "collapsed": True, "items": cat_nav})
+        category_index_entries.append(
+            f'<li><a href="{cat_slug}/">{cat_name}</a><span>{cat_desc}</span></li>'
+        )
 
     # Главная страница раздела напитков
-    top_index = f"""# Напитки
-
-Система приготовления напитков на базе плагина **BreweryX**. Варка идёт в котле, некоторые напитки требуют настоя в бочке.
+    top_index = frontmatter(
+        "Напитки BreweryX",
+        "Рецепты, ингредиенты, выдержка и эффекты серверных напитков.",
+    ) + f"""Система приготовления напитков на базе плагина **BreweryX**. Варка идёт в котле, некоторые напитки требуют настоя в бочке.
 
 ## Категории
 
+<ul class="drink-category-grid">
 {chr(10).join(category_index_entries)}
+</ul>
 
 ## Как читать рецепт
 
@@ -318,18 +434,32 @@ def main():
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "index.md").write_text(top_index, encoding="utf-8")
 
-    # Обновим mkdocs.yml nav
-    cfg_path = ROOT / "mkdocs.yml"
-    cfg = yaml.safe_load(cfg_path.read_text(encoding="utf-8"))
-    cfg["nav"] = [
-        {"Главная": "index.md"},
-        {"Напитки": nav_drinks},
-    ]
-    cfg_path.write_text(
-        yaml.safe_dump(cfg, allow_unicode=True, sort_keys=False),
+    # Серверные рецепты крафта
+    RECIPES_DOCS.mkdir(parents=True, exist_ok=True)
+    (RECIPES_DOCS / "index.md").write_text(
+        render_crafting_index().rstrip() + "\n",
         encoding="utf-8",
     )
-    print("Сгенерировано", sum(len(v) for v in DRINKS.values()), "страниц.")
+
+    sidebar = [
+        {"label": "Главная", "slug": "index"},
+        {"label": "ЧаВо", "slug": "faq"},
+        {"label": "Команды", "slug": "commands"},
+        {"label": "Серверные крафты", "slug": "recipes"},
+        {"label": "Напитки", "items": sidebar_drinks},
+    ]
+    SIDEBAR_PATH.write_text(
+        "// Generated by generate.py. Do not edit manually.\n"
+        f"export default {json.dumps(sidebar, ensure_ascii=False, indent=2)};\n",
+        encoding="utf-8",
+    )
+    print(
+        "Сгенерировано",
+        sum(len(v) for v in DRINKS.values()),
+        "страниц напитков и",
+        len(CRAFTING_RECIPES),
+        "крафта.",
+    )
 
 
 if __name__ == "__main__":

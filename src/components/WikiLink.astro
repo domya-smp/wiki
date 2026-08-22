@@ -1,0 +1,94 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+import type { ComponentProps } from 'astro/types';
+
+interface Props {
+  title: string;
+  href: string;
+  description?: string;
+  icon?: ComponentProps<typeof Icon>['name'] | 'globe' | 'building';
+}
+
+const { title, href, description, icon } = Astro.props;
+---
+
+<a class:list={['wiki-link', { 'wiki-link--with-icon': icon }]} href={href}>
+  {icon === 'globe' ? (
+    <svg class="wiki-link__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3c-2.4 2.5-3.6 5.5-3.6 9s1.2 6.5 3.6 9" />
+    </svg>
+  ) : icon === 'building' ? (
+    <svg class="wiki-link__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 21V7l8-4 8 4v14M2 21h20M9 21v-5h6v5M8 9h2M14 9h2M8 13h2M14 13h2" />
+    </svg>
+  ) : icon ? (
+    <Icon name={icon} size="1.35rem" class="wiki-link__icon" />
+  ) : null}
+  <span class="wiki-link__body">
+    <strong>{title}</strong>
+    {description && <span>{description}</span>}
+  </span>
+  <Icon name="right-arrow" size="1.5rem" class="wiki-link__arrow" />
+</a>
+
+<style>
+  .wiki-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.9rem;
+    align-items: start;
+    min-height: 100%;
+    padding: 1.15rem 1.2rem;
+    border-inline-start: 2px solid var(--sl-color-accent);
+    color: var(--sl-color-white);
+    background: color-mix(in srgb, var(--sl-color-gray-6) 52%, transparent);
+    text-decoration: none;
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+
+  .wiki-link--with-icon {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .wiki-link:hover {
+    border-color: var(--sl-color-accent-high);
+    background: color-mix(in srgb, var(--sl-color-accent-low) 42%, transparent);
+  }
+
+  .wiki-link__icon,
+  .wiki-link__arrow {
+    color: var(--sl-color-accent);
+  }
+
+  .wiki-link__icon {
+    margin-top: 0.05rem;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .wiki-link__arrow {
+    align-self: center;
+    transition: transform 160ms ease;
+  }
+
+  .wiki-link:hover .wiki-link__arrow {
+    transform: translateX(0.2rem);
+  }
+
+  .wiki-link__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .wiki-link__body strong {
+    font-size: var(--sl-text-lg);
+    line-height: 1.45rem;
+  }
+
+  .wiki-link__body span {
+    color: var(--sl-color-gray-2);
+    line-height: 1.5;
+  }
+</style>
