@@ -6,13 +6,16 @@ interface Props {
   title: string;
   href: string;
   description?: string;
+  descriptionLinkText?: string;
+  descriptionLinkHref?: string;
+  descriptionSuffix?: string;
   icon?: ComponentProps<typeof Icon>['name'] | 'globe' | 'building';
 }
 
-const { title, href, description, icon } = Astro.props;
+const { title, href, description, descriptionLinkText, descriptionLinkHref, descriptionSuffix, icon } = Astro.props;
 ---
 
-<a class:list={['wiki-link', { 'wiki-link--with-icon': icon }]} href={href}>
+<article class:list={['wiki-link', { 'wiki-link--with-icon': icon }]}>
   {icon === 'globe' ? (
     <svg class="wiki-link__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="9" />
@@ -26,15 +29,24 @@ const { title, href, description, icon } = Astro.props;
     <Icon name={icon} size="1.35rem" class="wiki-link__icon" />
   ) : null}
   <span class="wiki-link__body">
-    <strong>{title}</strong>
-    {description && <span>{description}</span>}
+    <strong><a class="wiki-link__primary" href={href}>{title}</a></strong>
+    {description && (
+      <span class="wiki-link__description">
+        {description}
+        {descriptionLinkText && descriptionLinkHref && (
+          <> <a href={descriptionLinkHref} target="_blank" rel="noreferrer">{descriptionLinkText}</a></>
+        )}
+        {descriptionSuffix}
+      </span>
+    )}
   </span>
   <Icon name="right-arrow" size="1.5rem" class="wiki-link__arrow" />
-</a>
+</article>
 
 <style>
   .wiki-link {
     display: grid;
+    position: relative;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.9rem;
     align-items: start;
@@ -45,6 +57,23 @@ const { title, href, description, icon } = Astro.props;
     background: color-mix(in srgb, var(--sl-color-gray-6) 52%, transparent);
     text-decoration: none;
     transition: background 160ms ease, border-color 160ms ease;
+  }
+
+  .wiki-link__primary {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .wiki-link__primary::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+  }
+
+  .wiki-link__description a {
+    position: relative;
+    z-index: 1;
+    color: var(--sl-color-accent-high);
   }
 
   .wiki-link--with-icon {
