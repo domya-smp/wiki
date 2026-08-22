@@ -407,7 +407,7 @@ def main():
             slug = drink[0]
             name = drink[1]
             (cat_dir / f"{slug}.md").write_text(render(drink), encoding="utf-8")
-            cat_index += f"- [{name}]({slug}.md)\n"
+            cat_index += f"- [{name}]({slug}/)\n"
             cat_nav.append({"label": name, "slug": f"drinks/{cat_slug}/{slug}"})
         (cat_dir / "index.md").write_text(cat_index, encoding="utf-8")
         sidebar_drinks.append({"label": cat_name, "collapsed": True, "items": cat_nav})
