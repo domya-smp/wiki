@@ -19,7 +19,8 @@ export default defineConfig({
       sidebar,
       lastUpdated: true,
       social: [
-        { icon: 'github', label: 'Ethos Wiki', href: 'https://github.com/onitofu/ethos/wiki' },
+        { icon: 'github', label: 'onitofu на GitHub', href: 'https://github.com/onitofu' },
+        { icon: 'discord', label: 'Discord DomSMP', href: 'https://discord.gg/hDz365YH6' },
       ],
     }),
   ],

@@ -10,7 +10,7 @@
   --sl-color-gray-5: #d8d0dc;
   --sl-color-gray-6: #f0ebf2;
   --sl-color-black: #fffaff;
-  --sl-content-width: 64rem;
+  --sl-content-width: 52rem;
   --sl-sidebar-item-padding-inline: 0.625rem;
 }
 
@@ -157,6 +157,15 @@ body {
   margin-top: 0.25rem;
   color: var(--sl-color-gray-2);
   line-height: 1.45;
+}
+
+.sl-markdown-content table:has(td:first-child code) :is(th, td):first-child {
+  width: 13rem;
+  min-width: 13rem;
+}
+
+.sl-markdown-content table:has(td:first-child code) td:first-child code {
+  white-space: nowrap;
 }
 
 .sl-markdown-content details {
