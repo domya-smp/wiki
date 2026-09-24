@@ -346,6 +346,31 @@ ITEM_NAMES = {
 }
 
 
+DRINK_AUTHORS = {
+    "catnip": "Millisent",
+    "valerian": "Millisent",
+    "marshmallow_syrup": "GooseyG228",
+    "activated_charcoal": "GooseyG228",
+    "chamomile_tea": "GooseyG228",
+    "chicken_broth": "GooseyG228",
+    "hawthorn_tea": "GooseyG228",
+    "buttercup_brew": "GooseyG228",
+    "belladonna_poison": "GooseyG228",
+    "dragon_blood": "GooseyG228",
+    "sculk_charge": "GooseyG228",
+    "spider_toxin": "GooseyG228",
+    "amber_death": "GooseyG228",
+    "eye_socket": "GooseyG228",
+    "acrid_buttercup": "GooseyG228",
+    "blue_curacao": "GooseyG228",
+    "sangria": "GooseyG228",
+    "sake": "GooseyG228",
+    "baltika": "GooseyG228",
+    "shu_puer": "GooseyG228",
+    "sheng_puer": "GooseyG228",
+}
+
+
 DISTILLATION = {
     "blue_curacao": (2, 40),
     "sangria": (2, 40),
@@ -370,6 +395,7 @@ def render(drink):
         glint = True
         d = d[:-1]
     slug, name, desc, ingredients, cook, barrel, age, color, diff, alc, effects = d
+    author = DRINK_AUTHORS.get(slug, "Nyansus")
 
     # Барьер/выдержка строки
     barrel_line = f"**Бочка:** {barrel}" if barrel else "**Бочка:** не нужна"
@@ -382,7 +408,9 @@ def render(drink):
     eff_rows = "\n".join(f"| {e} | {lvl} | {dur} |" for e, lvl, dur in effects)
 
     introduction = f"*{desc}*\n\n" if desc else ""
-    md = frontmatter(name, desc) + introduction + f""":::note[Краткая справка]
+    md = frontmatter(name, desc) + introduction + f"""**Автор рецепта:** {author}
+
+:::note[Краткая справка]
 **Сложность:** {diff} · **Опьянение:** {alc} · {barrel_line}
 :::
 
