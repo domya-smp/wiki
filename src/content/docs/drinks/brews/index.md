@@ -14,3 +14,6 @@ description: "Необычные рецепты с редкими эффекта
 - [Валерьянка](valerian/)
 - [Кошачья мята](catnip/)
 - [Сбитень](sbiten/)
+- [Сироп из алтея](marshmallow_syrup/)
+- [Активированный уголь](activated_charcoal/)
+- [Куриный бульон](chicken_broth/)

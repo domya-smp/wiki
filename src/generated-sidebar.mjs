@@ -66,6 +66,22 @@ export default [
           {
             "label": "Какао-чай",
             "slug": "drinks/teas/cocoa_tea"
+          },
+          {
+            "label": "Ромашковый чай",
+            "slug": "drinks/teas/chamomile_tea"
+          },
+          {
+            "label": "Чай из боярышника",
+            "slug": "drinks/teas/hawthorn_tea"
+          },
+          {
+            "label": "Шу Пу-эр",
+            "slug": "drinks/teas/shu_puer"
+          },
+          {
+            "label": "Шэн Пу-эр",
+            "slug": "drinks/teas/sheng_puer"
           }
         ]
       },
@@ -244,6 +260,86 @@ export default [
           {
             "label": "Сбитень",
             "slug": "drinks/brews/sbiten"
+          },
+          {
+            "label": "Сироп из алтея",
+            "slug": "drinks/brews/marshmallow_syrup"
+          },
+          {
+            "label": "Активированный уголь",
+            "slug": "drinks/brews/activated_charcoal"
+          },
+          {
+            "label": "Куриный бульон",
+            "slug": "drinks/brews/chicken_broth"
+          }
+        ]
+      },
+      {
+        "label": "Яды",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "Обзор",
+            "slug": "drinks/poisons"
+          },
+          {
+            "label": "Лютиковый отвар",
+            "slug": "drinks/poisons/buttercup_brew"
+          },
+          {
+            "label": "Яд из беладонны",
+            "slug": "drinks/poisons/belladonna_poison"
+          },
+          {
+            "label": "Кровь дракона",
+            "slug": "drinks/poisons/dragon_blood"
+          },
+          {
+            "label": "Скалковый заряд",
+            "slug": "drinks/poisons/sculk_charge"
+          },
+          {
+            "label": "Паучий токсин",
+            "slug": "drinks/poisons/spider_toxin"
+          },
+          {
+            "label": "Янтарная смерть",
+            "slug": "drinks/poisons/amber_death"
+          },
+          {
+            "label": "Глазница",
+            "slug": "drinks/poisons/eye_socket"
+          },
+          {
+            "label": "Едкий лютик",
+            "slug": "drinks/poisons/acrid_buttercup"
+          }
+        ]
+      },
+      {
+        "label": "Алкоголь",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "Обзор",
+            "slug": "drinks/alcohol"
+          },
+          {
+            "label": "Блю Кюрасао",
+            "slug": "drinks/alcohol/blue_curacao"
+          },
+          {
+            "label": "Сангрия",
+            "slug": "drinks/alcohol/sangria"
+          },
+          {
+            "label": "Саке",
+            "slug": "drinks/alcohol/sake"
+          },
+          {
+            "label": "Балтика",
+            "slug": "drinks/alcohol/baltika"
           }
         ]
       },

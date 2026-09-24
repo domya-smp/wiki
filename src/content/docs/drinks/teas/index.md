@@ -15,3 +15,7 @@ description: "Быстрые травяные настои с лёгкими э�
 - [Чай из азалии](azalea_tea/)
 - [Ягодный чай](berry_tea/)
 - [Какао-чай](cocoa_tea/)
+- [Ромашковый чай](chamomile_tea/)
+- [Чай из боярышника](hawthorn_tea/)
+- [Шу Пу-эр](shu_puer/)
+- [Шэн Пу-эр](sheng_puer/)
