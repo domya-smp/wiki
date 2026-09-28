@@ -17,3 +17,4 @@ description: "Необычные рецепты с редкими эффекта
 - [Сироп из алтея](marshmallow_syrup/)
 - [Активированный уголь](activated_charcoal/)
 - [Куриный бульон](chicken_broth/)
+- [Отвар из мелиссы](melissa_brew/)

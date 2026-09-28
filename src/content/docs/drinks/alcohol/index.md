@@ -10,3 +10,7 @@ description: "Алкогольные напитки с дистилляцией 
 - [Сангрия](sangria/)
 - [Саке](sake/)
 - [Балтика](baltika/)
+- [Клубничный мохито](strawberry_mojito/)
+- [Кловер клаб](clover_club/)
+- [Арбузный слинг](watermelon_sling/)
+- [Пеликан](pelican/)

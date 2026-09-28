@@ -82,6 +82,10 @@ export default [
           {
             "label": "Шэн Пу-эр",
             "slug": "drinks/teas/sheng_puer"
+          },
+          {
+            "label": "Липовый чай",
+            "slug": "drinks/teas/linden_tea"
           }
         ]
       },
@@ -272,6 +276,10 @@ export default [
           {
             "label": "Куриный бульон",
             "slug": "drinks/brews/chicken_broth"
+          },
+          {
+            "label": "Отвар из мелиссы",
+            "slug": "drinks/brews/melissa_brew"
           }
         ]
       },
@@ -340,6 +348,22 @@ export default [
           {
             "label": "Балтика",
             "slug": "drinks/alcohol/baltika"
+          },
+          {
+            "label": "Клубничный мохито",
+            "slug": "drinks/alcohol/strawberry_mojito"
+          },
+          {
+            "label": "Кловер клаб",
+            "slug": "drinks/alcohol/clover_club"
+          },
+          {
+            "label": "Арбузный слинг",
+            "slug": "drinks/alcohol/watermelon_sling"
+          },
+          {
+            "label": "Пеликан",
+            "slug": "drinks/alcohol/pelican"
           }
         ]
       },
@@ -440,6 +464,14 @@ export default [
           {
             "label": "Эликсир Дракона",
             "slug": "drinks/exclusive/dragon_elixir"
+          },
+          {
+            "label": "Гусье Пиво ✚",
+            "slug": "drinks/exclusive/goose_beer"
+          },
+          {
+            "label": "Сокровище Небосвода ✧",
+            "slug": "drinks/exclusive/sky_treasure"
           }
         ]
       }
